@@ -1,0 +1,10 @@
+delete from club;
+insert into club values('club1', 'dance-club');
+insert into club values('club2', 'music-club');
+insert into club values('club3', 'dramatic-club');
+insert into club values('club4', 'coding-club');
+insert into club values('club5', 'robotics-club');
+insert into club values('club6', 'automobile-club');
+insert into club values('club7', 'aeromodelling club');
+insert into club values('club8', 'quiz-club');
+insert into club values('club9', 'finearts-club');
