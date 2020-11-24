@@ -33,14 +33,11 @@ create table election
 create table voter
 	(v_id			varchar(15),
 	 c_id			varchar(15),
-	 status			varchar(20),
 	 primary key (v_id, c_id),
 	 foreign key (v_id) references student (s_id)
 		on delete cascade,
 	 foreign key (c_id) references club
 	 	on delete cascade,
-	 foreign key (status) references election
-	 	on delete set null
 	);
 
 create table candidate
