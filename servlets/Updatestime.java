@@ -19,6 +19,7 @@ public class Updatestime extends HttpServlet {
        
    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+   		PrintWriter out = response.getWriter();
 		try {
 			Connection con = null;
 	 		String url = "jdbc:postgresql://localhost:5432/elec_management"; //PostgreSQL URL and followed by the database name
@@ -37,14 +38,15 @@ public class Updatestime extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("stime", newtime);
 				response.sendRedirect("welcome_admin.jsp");
+				return;
 			}
-			else {
-				response.sendRedirect("update_stime.jsp");
-			}
+			out.println("<meta http-equiv = 'refresh' content='3; URL= update_stime.jsp'>");
+			out.println("<p style = 'color: red;'> invalid input!!!...redirecting...</p>");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("update_etime.jsp");
+			out.println("<meta http-equiv = 'refresh' content='3; URL= update_stime.jsp'>");
+			out.println("<p style = 'color: red;'> invalid input!!!...redirecting...</p>");
 		}
 	}
 

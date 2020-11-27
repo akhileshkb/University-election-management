@@ -68,7 +68,10 @@ public class ValidateAdmin extends HttpServlet {
 				response.sendRedirect("welcome_admin.jsp");
 				return;
 			}
-			response.sendRedirect("adminLogin.jsp");
+			//response.sendRedirect("adminLogin.jsp");
+			PrintWriter out = response.getWriter();
+			out.println("<meta http-equiv = 'refresh' content='3; URL= adminLogin.jsp'>");
+			out.println("<p style = 'color: red;'> user or password incorrct or empty !!!</p>");
 		}
 		catch (Exception e) 
  		{
