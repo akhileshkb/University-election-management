@@ -1,32 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>ElectionManagement</display-name>
+  <display-name>elec_management</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
-    <welcome-file>home.jsp</welcome-file><!-- common login file name -->
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>home.html</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
-    <display-name>studentloginServlet</display-name>
-    <servlet-name>studentloginServlet</servlet-name>
-    <servlet-class>studentloginServlet</servlet-class>
+	 <description></description>
+	 <display-name>ValidateAdmin</display-name>
+	 <servlet-name>ValidateAdmin</servlet-name>
+	 <servlet-class>ValidateAdmin</servlet-class>
   </servlet>
+  <servlet-mapping>
+	 <servlet-name>ValidateAdmin</servlet-name>
+	 <url-pattern>/ValidateAdmin</url-pattern>
+  </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>adminloginServlet</display-name>
-    <servlet-name>adminloginServlet</servlet-name>
-    <servlet-class>adminloginServlet</servlet-class>
+	 <description></description>
+	 <display-name>Logout</display-name>
+	 <servlet-name>Logout</servlet-name>
+	 <servlet-class>Logout</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>studentloginServlet</servlet-name>
-    <url-pattern>/studentloginServlet</url-pattern>
+	 <servlet-name>Logout</servlet-name>
+	 <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>Updatestime</display-name>
+	 <servlet-name>Updatestime</servlet-name>
+	 <servlet-class>Updatestime</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>adminloginServlet</servlet-name>
-    <url-pattern>/adminloginServlet</url-pattern>
+	 <servlet-name>Updatestime</servlet-name>
+	 <url-pattern>/Updatestime</url-pattern>
   </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>Updateetime</display-name>
+	 <servlet-name>Updateetime</servlet-name>
+	 <servlet-class>Updateetime</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>Updateetime</servlet-name>
+	 <url-pattern>/Updateetime</url-pattern>
+  </servlet-mapping>
+ 
 </web-app>
