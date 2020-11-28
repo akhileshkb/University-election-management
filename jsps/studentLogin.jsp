@@ -7,17 +7,26 @@
 <title>student login</title>
 </head>
 <body>
-	<form action= "validate-student" method = "post">
-		<table>
+<div align = "center">
+	<h1>Student login page</h1>
+	<br><br>
+	<button onclick = "location.href = 'home.html' ">home</button>
+	<br><br>
+	<form action= "Validate_student" method = "post">
+		<table style = "border-spacing : 15px">
 			<tr>
 				<td>ID:</td>
-				<td><input type = "text" name = "id" /></td>
+				<td><input type = "text" name = "id" title= "enter your student id" /></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
 				<td><input type = "password" name="password" /></td>
 			</tr>
+			
 		</table>
+		<input type= "submit" value = "login"/>
 	</form>
+	
+</div>
 </body>
 </html>
