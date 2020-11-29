@@ -1,10 +1,10 @@
-drop table student;
-drop table club;
-drop table voter;
-drop table candidate;
 drop table votes;
 drop table winner;
+drop table candidate;
+drop table voter;
 drop table admin;
+drop table student;
+drop table club;
 drop table election;
 
 create table student
@@ -37,7 +37,7 @@ create table voter
 	 foreign key (v_id) references student (s_id)
 		on delete cascade,
 	 foreign key (c_id) references club
-	 	on delete cascade,
+	 	on delete cascade
 	);
 
 create table candidate
@@ -61,7 +61,7 @@ create table votes
 	 primary key (Voter, Candidate, voter_club),
 	 foreign key (Voter, voter_club) references voter(v_id, c_id)
 		on delete cascade,
-	 foreign key (Candidate, cand_club) references candidate(s_id, c_id)
+	 foreign key (Candidate, cand_club) references candidate(s_id, c_id) 
 		on delete cascade
 	);
 
