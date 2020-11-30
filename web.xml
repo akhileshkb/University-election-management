@@ -80,5 +80,24 @@
 	 <servlet-name>Registration</servlet-name>
 	 <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
- 
+  <servlet>
+	 <description></description>
+	 <display-name>ShowList</display-name>
+	 <servlet-name>ShowList</servlet-name>
+	 <servlet-class>ShowList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>ShowList</servlet-name>
+	 <url-pattern>/ShowList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>MakeVote</display-name>
+	 <servlet-name>MakeVote</servlet-name>
+	 <servlet-class>MakeVote</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>MakeVote</servlet-name>
+	 <url-pattern>/MakeVote</url-pattern>
+  </servlet-mapping>
 </web-app>

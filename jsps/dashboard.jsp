@@ -54,8 +54,8 @@
 			s+=("<td>"+c_id+"</td>");
 			var c_name= String(club_data[i+1]);
 			s+=("<td>"+c_name+"</td>");
-			var vote = "<form action='showlist.jsp' id = 'myform"+c_id+"'>";
-			vote +=" <input type='hidden' id= 'club"+c_id+"'/><input type= 'submit' value='votenow' onclick='setclub(\""+c_id+"\")'/></form>";
+			var vote = "<form action='ShowList' id = 'myform"+c_id+"' method = 'post'>";
+			vote +=" <input type='hidden' id= 'club"+c_id+"' name = 'standfor1'/><input type= 'submit' value='votenow' onclick='setclub(\""+c_id+"\")'/></form>";
 			var stand = "<form action='RegisterCandidate' id = 'myform1"+c_id+"' method = 'post'>";
 			stand +=" <input type='hidden' id= 'club1"+c_id+"' name = 'standfor'/><input type= 'submit' value='stand as candidate' onclick='setclub1(\""+c_id+"\")'/></form>";
 			s+=("<td>"+vote+"</td><td>"+stand+"</td></tr>");
