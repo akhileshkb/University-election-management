@@ -43,7 +43,7 @@ create table voter
 create table candidate
 	(s_id			varchar(15), 
 	 c_id			varchar(15) , 
-	 vote_count		int check (vote_count > 0),
+	 vote_count		int check (vote_count >= 0),
 	 achieve		text not null,
 	 primary key (s_id, c_id),
 	 foreign key (s_id) references student

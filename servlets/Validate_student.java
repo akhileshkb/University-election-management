@@ -1,11 +1,9 @@
-
-
-import java.io.IOException;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,12 +37,13 @@ public class Validate_student extends HttpServlet {
 		{
 			Connection con = null;
 	 		String url = "jdbc:postgresql://localhost:5432/elec_management"; //PostgreSQL URL and followed by the database name
-	 		String username = "project"; //PostgreSQL username
-	 		String password = "123"; //PostgreSQL password
+	 		String username = "postgres"; //PostgreSQL username
+	 		String password = "1234"; //PostgreSQL password
 			
 			Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(url, username, password); //attempting to connect to PostgreSQL database
-			String s_id = request.getParameter("id");
+			
+	 		String s_id = request.getParameter("id");
 			String s_pass = request.getParameter("password");
 			PreparedStatement st = con.prepareStatement("select * from student where s_id=? and pass=?;");
 			st.setString(1,s_id);
@@ -57,7 +56,6 @@ public class Validate_student extends HttpServlet {
 				session.setAttribute("username",name );
 				session.setAttribute("user_id", s_id);
 				
-//				sql = "select * from election";
 			    st = con.prepareStatement("select * from election;");
 				
 				ResultSet rs1 = st.executeQuery();
@@ -73,11 +71,38 @@ public class Validate_student extends HttpServlet {
 					session.setAttribute("guideline", guideline);
 					//System.out.println(starttime+ " " + endtime + " "+ guideline);
 				}
-//				out.println('<script>alert("hi");</script>');
+				
+				
+				String sql = "select c_id from voter where v_id = ?";
+				st = con.prepareStatement(sql);
+				st.setString(1, s_id);
+				rs1 = st.executeQuery();
+				//String clubdata = "";
+				ArrayList<String> clubdata = new ArrayList<String>();
+				while(rs1.next()) {
+					String c_id = rs1.getString("c_id");
+					sql = "select name from club where c_id =?";
+					st= con.prepareStatement(sql);
+					st.setString(1, c_id);
+					rs = st.executeQuery();
+					if(rs.next()) {
+						String club_name = rs.getString(1);
+						clubdata.add("'"+c_id+"'");
+						clubdata.add("'"+club_name+"'");
+						/*clubdata +=c_id;
+						clubdata+=" ";
+						clubdata+=club_name;
+						clubdata+=" ";*/
+					}
+				}
+				session.setAttribute("clubdata", clubdata);
 				response.sendRedirect("dashboard.jsp");
 				return;
 			}
-			response.sendRedirect("studentLogin.jsp");
+			//response.sendRedirect("studentLogin.jsp");
+			PrintWriter out = response.getWriter();
+			out.println("<meta http-equiv = 'refresh' content='3; URL= studentLogin.jsp'>");
+			out.println("<p style = 'color: red;'> user or password incorrct or empty !!!</p>");
 		}
 		catch (Exception e) 
  		{

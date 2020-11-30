@@ -22,6 +22,16 @@
   </servlet-mapping>
   <servlet>
 	 <description></description>
+	 <display-name>Validate_student</display-name>
+	 <servlet-name>Validate_student</servlet-name>
+	 <servlet-class>Validate_student</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>Validate_student</servlet-name>
+	 <url-pattern>/Validate_student</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	 <description></description>
 	 <display-name>Logout</display-name>
 	 <servlet-name>Logout</servlet-name>
 	 <servlet-class>Logout</servlet-class>
@@ -49,6 +59,26 @@
   <servlet-mapping>
 	 <servlet-name>Updateetime</servlet-name>
 	 <url-pattern>/Updateetime</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>RegisterCandidate</display-name>
+	 <servlet-name>RegisterCandidate</servlet-name>
+	 <servlet-class>RegisterCandidate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>RegisterCandidate</servlet-name>
+	 <url-pattern>/RegisterCandidate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>Registration</display-name>
+	 <servlet-name>Registration</servlet-name>
+	 <servlet-class>Registration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>Registration</servlet-name>
+	 <url-pattern>/Registration</url-pattern>
   </servlet-mapping>
  
 </web-app>
