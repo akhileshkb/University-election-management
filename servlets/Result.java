@@ -39,7 +39,7 @@ public class Result extends HttpServlet {
 			Connection con = null;
 	 		String url = "jdbc:postgresql://localhost:5432/elec_management"; //PostgreSQL URL and followed by the database name
 	 		String username = "postgres"; //PostgreSQL username
-	 		String password = "123"; //PostgreSQL password
+	 		String password = "1234"; //PostgreSQL password
 			
 			Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(url, username, password); //attempting to connect to PostgreSQL database
