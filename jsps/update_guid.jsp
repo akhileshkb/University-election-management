@@ -20,7 +20,7 @@
 <form action = "Updateguid" method = "post" >
 	<table>
 		<tr>
-			<td>enter new end time(yy-mm-dd hour:min:sec)</td>
+			<td>Enter new guidelines</td>
 			<td><input type = "text" name = "newt"/></td>
 		</tr>
 	</table>
