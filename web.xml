@@ -110,4 +110,14 @@
 	 <servlet-name>Result</servlet-name>
 	 <url-pattern>/Result</url-pattern>
   </servlet-mapping>
+    <servlet>
+	 <description></description>
+	 <display-name>Updateguid</display-name>
+	 <servlet-name>Updateguid</servlet-name>
+	 <servlet-class>Updateguid</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>Updateguid</servlet-name>
+	 <url-pattern>/Updateguid</url-pattern>
+  </servlet-mapping>
 </web-app>
