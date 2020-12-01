@@ -100,4 +100,14 @@
 	 <servlet-name>MakeVote</servlet-name>
 	 <url-pattern>/MakeVote</url-pattern>
   </servlet-mapping>
+  <servlet>
+	 <description></description>
+	 <display-name>Result</display-name>
+	 <servlet-name>Result</servlet-name>
+	 <servlet-class>Result</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	 <servlet-name>Result</servlet-name>
+	 <url-pattern>/Result</url-pattern>
+  </servlet-mapping>
 </web-app>
