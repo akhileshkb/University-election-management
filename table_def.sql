@@ -68,9 +68,9 @@ create table votes
 create table winner
 	(s_id			varchar(15), 
 	 c_id			varchar(15),
-	 margin			int check (margin > 0),
+	 margin			int ,
 	 primary key (c_id),
-	 foreign key (c_id, s_id) references candidate
+	 foreign key (s_id, c_id) references candidate
 		on delete set null
 	);
 
