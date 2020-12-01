@@ -7,19 +7,26 @@
 <title>Results</title>
 </head>
 <body>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	if(session.getAttribute("user_id")== null)
+		response.sendRedirect("studentLogin.jsp");
+%>
 <div id = "clubdet"><h3>Winners List</h3></div>
  	<script type="text/javascript">
 		var s = "";
-		s+= "<table border = '1' width = 80%><tr><th>Student Id</th><th>club name</th><th>Margin</th></tr>";
+		s+= "<table border = '1' width = 80%><tr><th>Student Id</th><th>Student Name</th><th>club name</th><th>Margin</th></tr>";
 		var winner_data = ${winnerdata}
 		var n= winner_data.length;
-		for(var i=0;i<n;i+=3){
+		for(var i=0;i<n;i+=4){
 			s+="<tr>";
-			var c_id = String(winner_data[i]);
+			var c1_id = String(winner_data[i]);
+			s+=("<td>"+c1_id+"</td>");
+			var c_id = String(winner_data[i+1]);
 			s+=("<td>"+c_id+"</td>");
-			var c_name= String(winner_data[i+1]);
+			var c_name= String(winner_data[i+2]);
 			s+=("<td>"+c_name+"</td>");
-			var d_name= String(winner_data[i+2]);
+			var d_name= String(winner_data[i+3]);
 			s+=("<td>"+d_name+"</td>");
 			s+="<tr>";
 			/* var vote = "<form action='ShowList' id = 'myform"+c_id+"' method = 'post'>";
