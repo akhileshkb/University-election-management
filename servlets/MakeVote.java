@@ -35,7 +35,7 @@ public class MakeVote extends HttpServlet {
 			Connection con = null;
 	 		String url = "jdbc:postgresql://localhost:5432/elec_management"; //PostgreSQL URL and followed by the database name
 	 		String username = "postgres"; //PostgreSQL username
-	 		String password = "1234"; //PostgreSQL password
+	 		String password = "123"; //PostgreSQL password
 			
 			Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(url, username, password); //attempting to connect to PostgreSQL database
@@ -59,9 +59,14 @@ public class MakeVote extends HttpServlet {
 			st.setString(4, club);
 			int i= st.executeUpdate();
 			if(i>0) {
-				
-				out.println("<meta http-equiv = 'refresh' content='3; URL= dashboard.jsp'>");
-				out.println("<p><h3 style = 'color: green;'> your response has been saved successfully !!!</h3></p>");
+				String sql1 = "update candidate set vote_count = vote_count + 1 where s_id = ?";
+				PreparedStatement st1 = con.prepareStatement(sql1);
+				st1.setString(1, cand_id);
+				int i1 = st1.executeUpdate();
+				if(i1>0) {
+					out.println("<meta http-equiv = 'refresh' content='3; URL= dashboard.jsp'>");
+					out.println("<p><h3 style = 'color: green;'> your response has been saved successfully !!!</h3></p>");
+				}
 			}
 		}
 		catch(Exception e) {
