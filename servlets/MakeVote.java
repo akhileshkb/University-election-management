@@ -30,6 +30,7 @@ public class MakeVote extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		PrintWriter out = response.getWriter();
 		try {
 			Connection con = null;
 	 		String url = "jdbc:postgresql://localhost:5432/elec_management"; //PostgreSQL URL and followed by the database name
@@ -40,14 +41,16 @@ public class MakeVote extends HttpServlet {
 			con = DriverManager.getConnection(url, username, password); //attempting to connect to PostgreSQL database
 	 		
 			HttpSession session = request.getSession();
+			
 			String club= (String) session.getAttribute("voteforclub");
 			String user_id = (String) session.getAttribute("user_id");
 			String cand_id = request.getParameter("voteto");
 			if(cand_id==null) {
-				PrintWriter out = response.getWriter();
+				out = response.getWriter();
 				out.println("<meta http-equiv = 'refresh' content='3; URL= showlist.jsp'>");
 				out.println("<p style = 'color: red;'> you have not selected anything !!!</p>");
 			}
+			
 			String sql= "insert into votes values(?,?,?,?)";
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, user_id);
@@ -56,7 +59,7 @@ public class MakeVote extends HttpServlet {
 			st.setString(4, club);
 			int i= st.executeUpdate();
 			if(i>0) {
-				PrintWriter out = response.getWriter();
+				
 				out.println("<meta http-equiv = 'refresh' content='3; URL= dashboard.jsp'>");
 				out.println("<p><h3 style = 'color: green;'> your response has been saved successfully !!!</h3></p>");
 			}

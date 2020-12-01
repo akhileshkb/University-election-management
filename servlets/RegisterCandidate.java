@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +42,23 @@ public class RegisterCandidate extends HttpServlet {
 			con = DriverManager.getConnection(url, username, password); //attempting to connect to PostgreSQL database
 	 		
 			HttpSession session = request.getSession();
+			
+			String etime = (String) session.getAttribute("etime");
+			String stime = (String) session.getAttribute("stime");
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");  
+			LocalDateTime now = LocalDateTime.now();  
+			LocalDateTime elec_etime = LocalDateTime.parse(etime, dtf);
+			LocalDateTime elec_stime = LocalDateTime.parse(stime, dtf);
+			if(elec_stime.isBefore(now))
+			{
+				System.out.println("success");
+				PrintWriter out = response.getWriter();
+				out = response.getWriter();
+				out.println("<meta http-equiv = 'refresh' content='3; URL= dashboard.jsp'>");
+				out.println("<p style = 'color: red;'> Candidate Registration Time is over!!!</p>");
+				return;
+			}
+			
 			session.removeAttribute("standforclub");
 			String club_id = (String)request.getParameter("standfor");
 			String user_id = (String) session.getAttribute("user_id");

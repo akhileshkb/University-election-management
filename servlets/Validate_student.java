@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class Validate_student extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
 		try
 		{
 			Connection con = null;
@@ -71,7 +73,28 @@ public class Validate_student extends HttpServlet {
 					session.setAttribute("guideline", guideline);
 					//System.out.println(starttime+ " " + endtime + " "+ guideline);
 				}
-				
+//				String etime = (String) session.getAttribute("etime");
+//				String stime = (String) session.getAttribute("stime");
+//				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");  
+//				LocalDateTime now = LocalDateTime.now();  
+//				LocalDateTime elec_etime = LocalDateTime.parse(etime, dtf);
+//				LocalDateTime elec_stime = LocalDateTime.parse(etime, dtf);
+//				if(elec_etime.isBefore(now))
+//				{
+//					System.out.println("success");
+//					out = response.getWriter();
+//					out.println("<meta http-equiv = 'refresh' content='3; URL= studentLogin.jsp'>");
+//					out.println("<p style = 'color: red;'> Election Ended!!!</p>");
+//					return;
+//				}
+//				if(elec_stime.isAfter(now))
+//				{
+//					System.out.println("success");
+//					out = response.getWriter();
+//					out.println("<meta http-equiv = 'refresh' content='3; URL= studentLogin.jsp'>");
+//					out.println("<p style = 'color: red;'> Election not Started!!!</p>");
+//					return;
+//				}
 				
 				String sql = "select c_id from voter where v_id = ?";
 				st = con.prepareStatement(sql);
@@ -100,7 +123,7 @@ public class Validate_student extends HttpServlet {
 				return;
 			}
 			//response.sendRedirect("studentLogin.jsp");
-			PrintWriter out = response.getWriter();
+			out = response.getWriter();
 			out.println("<meta http-equiv = 'refresh' content='3; URL= studentLogin.jsp'>");
 			out.println("<p style = 'color: red;'> user or password incorrct or empty !!!</p>");
 		}
